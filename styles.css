@@ -1,0 +1,61 @@
+:root {
+  --primary-color: #4af; /* Default primary color */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+h1,
+h2 {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  margin: 10px 0;
+}
+
+button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #777;
+}
+
+/* Highlight selected buttons */
+button.selected {
+  background-color: var(--primary-color);
+  color: #222; /* Dark text for contrast */
+  font-weight: bold;
+  border: 2px solid var(--primary-color); /* Extra highlight */
+}
+
+#output {
+  margin: 20px auto; /* Center the element */
+  padding: 20px; /* Adjust padding for cleaner spacing */
+  font-size: 46px;
+  font-weight: bold;
+  color: var(--primary-color);
+  white-space: nowrap; /* Prevent names from wrapping */
+}
+
+#generate {
+  font-size: 36px;
+}

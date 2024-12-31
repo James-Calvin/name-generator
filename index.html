@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Name Generator</h1>
+
+    <!-- Display Name -->
+    <div id="output">Name Appears Here</div>
+
+    <!-- Generate Button -->
+    <button id="generate" onclick="generateFullName()">Generate Name</button>
+
+    <!-- Gender Selection -->
+    <div class="buttons gender-buttons">
+      <h2>Choose Gender</h2>
+      <button onclick="setGender('f')">Female</button>
+      <button onclick="setGender('m')">Male</button>
+    </div>
+
+    <!-- Race Selection -->
+    <div class="buttons race-buttons">
+      <h2>Choose Race</h2>
+      <button onclick="setRace('aian')">Native American</button>
+      <button onclick="setRace('api')">Asian/Pacific Islander</button>
+      <button onclick="setRace('black')">Black</button>
+      <button onclick="setRace('hispanic')">Hispanic</button>
+      <button onclick="setRace('white')">White</button>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

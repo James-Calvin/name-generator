@@ -16,8 +16,8 @@ let namesData = {
 };
 
 function getRaritySymbol(value) {
-  if (value <= 0.625) return "⬤";
-  if (value <= 0.9375) return "⯁";
+  if (value <= 0.625) return "●";
+  if (value <= 0.9375) return "◆";
   if (value <= 0.995) return "★";
   return "✪";
 }

@@ -1,9 +1,12 @@
 let gender = null;
 let race = null;
 let showMiddleName = true;
-let first = null;
-let middle = null;
-let last = null;
+let first_name, middle_name, last_name;
+let rarity = {
+  first: 0,
+  middle: 0,
+  last: 0,
+};
 
 // Storage for all preloaded data
 let namesData = {
@@ -12,10 +15,24 @@ let namesData = {
   last: {},
 };
 
-function updateButtonSelection(buttonGroup, selectedButton) {
-  const buttons = document.querySelectorAll(`.${buttonGroup} button`);
-  buttons.forEach((btn) => btn.classList.remove("selected"));
-  selectedButton.classList.add("selected");
+function getRaritySymbol(value) {
+  if (value <= 0.625) return "⬤";
+  if (value <= 0.9375) return "⯁";
+  if (value <= 0.995) return "★";
+  return "✪";
+}
+
+function getNameRarity() {
+  let rarityString = "";
+  rarityString += getRaritySymbol(rarity["first"]);
+  rarityString += getRaritySymbol(rarity["middle"]);
+  rarityString += getRaritySymbol(rarity["last"]);
+  return rarityString;
+}
+
+function updateRaritySymbol() {
+  const element = document.getElementById("rarity");
+  element.innerText = getNameRarity();
 }
 
 // Utility function to update button selection
@@ -35,14 +52,12 @@ function updateButtonSelection(buttonGroup, selectedKey) {
 // Set Gender
 function setGender(g) {
   gender = g;
-  // console.log("Gender set to:", gender);
   updateButtonSelection("gender-buttons", g === "f" ? "female" : "male");
 }
 
 // Set Race
 function setRace(r) {
   race = r;
-  // console.log("Race set to:", race);
   const raceMap = {
     aian: "native american",
     api: "asian",
@@ -67,7 +82,7 @@ function setRandomRace() {
   setRace(randomRace);
 }
 
-// 2. Preload All Names and Cumulative Data
+// Preload All Names and Cumulative Data
 async function preloadData() {
   const paths = {
     first: "data/first_name_alt_4000",
@@ -115,11 +130,13 @@ function generateFullName() {
     return;
   }
 
-  firstName = getRandomName("first").trim();
-  middleName = getRandomName("middle").trim();
-  lastName = getRandomName("last").trim();
+  first_name = getRandomName("first").trim();
+  middle_name = getRandomName("middle").trim();
+  last_name = getRandomName("last").trim();
 
-  const fullName = `${firstName} ${middleName} ${lastName}`;
+  updateRaritySymbol();
+
+  const fullName = `${first_name} ${middle_name} ${last_name}`;
   console.log(`${gender}${race}\t${fullName}`);
 
   updateName();
@@ -131,12 +148,12 @@ function toggleMiddleName() {
 }
 
 function updateName() {
-  const fullName = `${firstName} ${middleName} ${lastName}`;
+  const fullName = `${first_name} ${middle_name} ${last_name}`;
   if (showMiddleName) {
-    document.getElementById("output").innerText = fullName;
+    document.getElementById("output-span").innerText = fullName;
   } else {
-    const firstLast = `${firstName} ${middleName[0]}. ${lastName}`;
-    document.getElementById("output").innerText = firstLast;
+    const firstLast = `${first_name} ${middle_name[0]}. ${last_name}`;
+    document.getElementById("output-span").innerText = firstLast;
   }
 }
 
@@ -152,6 +169,7 @@ function getRandomName(nameType) {
   }
 
   const randomValue = Math.random();
+  rarity[nameType] = randomValue;
   const index = cumulative.findIndex((value) => value >= randomValue);
   return names[index] || "Unknown";
 }
@@ -161,9 +179,9 @@ function setPrimaryColor(hue) {
   document.documentElement.style.setProperty("--primary-color", randomColor); // Update CSS variable
 }
 
-function setRandomPrimaryColor(colors = 24) {
+function setRandomPrimaryColor(colors = 9) {
   const color = Math.floor(Math.random() * colors); // E.g. 24 yields 0-23
-  const hue = (360 * color) / colors;
+  const hue = 360 * (color / colors);
   setPrimaryColor(hue);
 }
 
@@ -181,3 +199,9 @@ window.addEventListener("load", () => {
     generateFullName();
   });
 });
+
+function rollDice() {
+  setRandomGender();
+  setRandomRace();
+  generateFullName();
+}

@@ -1,1 +1,1 @@
-# names.github.io
+# Name Generator

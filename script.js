@@ -1,5 +1,9 @@
 let gender = null;
 let race = null;
+let showMiddleName = true;
+let first = null;
+let middle = null;
+let last = null;
 
 // Storage for all preloaded data
 let namesData = {
@@ -31,17 +35,17 @@ function updateButtonSelection(buttonGroup, selectedKey) {
 // Set Gender
 function setGender(g) {
   gender = g;
-  console.log("Gender set to:", gender);
+  // console.log("Gender set to:", gender);
   updateButtonSelection("gender-buttons", g === "f" ? "female" : "male");
 }
 
 // Set Race
 function setRace(r) {
   race = r;
-  console.log("Race set to:", race);
+  // console.log("Race set to:", race);
   const raceMap = {
     aian: "native american",
-    api: "asian/pacific islander",
+    api: "asian",
     black: "black",
     hispanic: "hispanic",
     white: "white",
@@ -104,19 +108,36 @@ async function preloadData() {
   console.log("All data preloaded successfully!");
 }
 
-// 3. Generate a Full Name
+// Generate a Full Name
 function generateFullName() {
   if (!gender || !race) {
     alert("Please select both gender and race.");
     return;
   }
 
-  const firstName = getRandomName("first").trim();
-  const middleName = getRandomName("middle").trim();
-  const lastName = getRandomName("last").trim();
+  firstName = getRandomName("first").trim();
+  middleName = getRandomName("middle").trim();
+  lastName = getRandomName("last").trim();
 
   const fullName = `${firstName} ${middleName} ${lastName}`;
-  document.getElementById("output").innerText = fullName;
+  console.log(`${gender}${race}\t${fullName}`);
+
+  updateName();
+}
+
+function toggleMiddleName() {
+  showMiddleName = !showMiddleName;
+  updateName();
+}
+
+function updateName() {
+  const fullName = `${firstName} ${middleName} ${lastName}`;
+  if (showMiddleName) {
+    document.getElementById("output").innerText = fullName;
+  } else {
+    const firstLast = `${firstName} ${middleName[0]}. ${lastName}`;
+    document.getElementById("output").innerText = firstLast;
+  }
 }
 
 // Utility function to get a random name
@@ -146,12 +167,15 @@ function setRandomPrimaryColor(colors = 24) {
   setPrimaryColor(hue);
 }
 
-// 4. Preload Data on Page Load
+// Preload Data on Page Load
 window.addEventListener("load", () => {
-  if (Math.random() < 0.15) {
+  if (Math.random() < 0.05) {
     setRandomPrimaryColor();
   }
   preloadData().then(() => {
+    const button = document.getElementById("generate");
+    button.disabled = false;
+    button.innerText = "Generate Name";
     setRandomGender();
     setRandomRace();
     generateFullName();

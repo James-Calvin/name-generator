@@ -10,29 +10,46 @@
 
 <body>
   <div class="container">
-    <h1>Name Generator</h1>
+    <h1 onclick="setRandomPrimaryColor()">Name Generator</h1>
 
     <!-- Display Name -->
-    <div id="output">Name Appears Here</div>
+    <div id="output" onclick="toggleMiddleName()">Name Appears Here</div>
 
-    <!-- Generate Button -->
-    <button id="generate" onclick="generateFullName()">Generate Name</button>
+    <!-- Race Selection -->
+    <div class="buttons race-buttons">
+      <h2 onclick="{setRandomRace();generateFullName()}">Choose Race</h2>
+      <button onclick="setRace('aian')">Native American</button>
+      <button onclick="setRace('api')">Asian</button>
+      <button onclick="setRace('black')">Black</button>
+      <button onclick="setRace('hispanic')">Hispanic</button>
+      <button onclick="setRace('white')">White</button>
+    </div>
 
     <!-- Gender Selection -->
     <div class="buttons gender-buttons">
-      <h2>Choose Gender</h2>
+      <h2 onclick="{setRandomGender();generateFullName()}">Choose Gender</h2>
       <button onclick="setGender('f')">Female</button>
       <button onclick="setGender('m')">Male</button>
     </div>
 
-    <!-- Race Selection -->
-    <div class="buttons race-buttons">
-      <h2>Choose Race</h2>
-      <button onclick="setRace('aian')">Native American</button>
-      <button onclick="setRace('api')">Asian/Pacific Islander</button>
-      <button onclick="setRace('black')">Black</button>
-      <button onclick="setRace('hispanic')">Hispanic</button>
-      <button onclick="setRace('white')">White</button>
+    <!-- Generate Button -->
+    <button id="generate" disabled onclick="generateFullName()">Loading</button>
+    <div id="random" 
+      onclick="{setRandomGender();setRandomRace();generateFullName()}"
+    >🎲</div>
+
+    <!-- About Information-->
+    <hr>
+    <div id="about">
+      <p>This application generates names with probabilities based on their 
+        number of appearances in U.S. demographic data.</p>
+      <p>The datasets used in the project can be found on Kaggle: 
+        <a href="https://www.kaggle.com/datasets/jamescalvinmeaders/gender-and-race-data-for-names" target="_blank">Gender and Race Data for Names</a>
+      </p>
+      <p>
+        The code to generate the data can be found on GitHub: 
+        <a href="https://github.com/James-Calvin/Name-Data-V3">Name-Data-V3</a>
+      </p>
     </div>
 
   </div>

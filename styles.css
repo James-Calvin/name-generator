@@ -1,11 +1,13 @@
 :root {
-  --primary-color: #4af; /* Default primary color */
+  --primary-color: #4af;
+  --bg-color: #222;
+  --middle-color: #444;
 }
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background-color: #222;
+  background-color: var(--bg-color);
   color: #fff;
   text-align: center;
 }
@@ -24,7 +26,7 @@ h2 {
 }
 
 button {
-  background-color: #444;
+  background-color: var(--middle-color);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -42,7 +44,7 @@ button:hover {
 /* Highlight selected buttons */
 button.selected {
   background-color: var(--primary-color);
-  color: #222; /* Dark text for contrast */
+  color: var(--bg-color); /* Dark text for contrast */
   font-weight: bold;
   border: 2px solid var(--primary-color);
 }
@@ -57,7 +59,38 @@ button.selected {
 }
 
 #generate {
+  margin-top: 40px;
   font-size: 28px;
   border-radius: 6px;
   border: 2px solid var(--primary-color);
+}
+
+#generate:disabled {
+  border: 2px solid var(--middle-color);
+  background-color: var(--bg-color);
+  color: var(--middle-color);
+  cursor: not-allowed;
+}
+
+#random {
+  margin: 10px 48vw;
+  padding: 0 0;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+hr {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  width: 95vw;
+  border: none;
+  background-color: var(--middle-color);
+  height: 1px;
+}
+
+#about {
+  color: var(--middle-color);
+  width: 85vw;
+  margin: auto;
+  text-align: left;
 }

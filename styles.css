@@ -1,5 +1,12 @@
 :root {
-  --primary-color: #4af; /* Modifies the thematic color of the app */
+  --primary-hue: 210;
+  --primary-saturation: 100%;
+  --primary-luminosity: 63%;
+  --primary-color: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  ); /* Modifies the thematic color of the app */
   --bg-color: #222;
   --middle-color: #444;
 }
@@ -15,6 +22,31 @@ body {
 h1,
 h2 {
   margin-bottom: 10px;
+}
+
+a {
+  color: hsl(
+    var(--primary-hue),
+    calc(var(--primary-saturation) * 2 / 3),
+    calc(var(--primary-luminosity) * 4 / 5)
+  );
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: hsl(
+    var(--primary-hue),
+    calc(var(--primary-saturation) / 2),
+    calc(var(--primary-luminosity) / 2)
+  );
+}
+
+a:active {
+  color: var(--primary-color);
 }
 
 .clickable-text {

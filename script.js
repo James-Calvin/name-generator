@@ -175,8 +175,7 @@ function getRandomName(nameType) {
 }
 
 function setPrimaryColor(hue) {
-  const randomColor = `hsl(${hue}, 100%, 63%)`; // Create an HSL color
-  document.documentElement.style.setProperty("--primary-color", randomColor); // Update CSS variable
+  document.documentElement.style.setProperty("--primary-hue", hue); // Update CSS variable
 }
 
 function setRandomPrimaryColor(colors = 9) {

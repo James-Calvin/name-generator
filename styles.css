@@ -21,43 +21,30 @@ body {
 
 h1,
 h2 {
-  margin-bottom: 10px;
-}
-
-a {
-  color: hsl(
-    var(--primary-hue),
-    calc(var(--primary-saturation) * 2 / 3),
-    calc(var(--primary-luminosity) * 4 / 5)
-  );
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:visited {
-  color: hsl(
-    var(--primary-hue),
-    calc(var(--primary-saturation) / 2),
-    calc(var(--primary-luminosity) / 2)
-  );
-}
-
-a:active {
-  color: var(--primary-color);
+  margin-bottom: 10px; /* Add a little space before start of content */
 }
 
 .clickable-text {
-  cursor: pointer;
-  padding: 12px;
+  cursor: pointer; /* Feedback for being able to click text */
+  padding: 12px; /* Ease of use; slightly larger bounding box for clicking */
 }
 
-.buttons {
-  margin: 10px 0;
+/* The generated name */
+#output {
+  margin-top: 40px; /* Breathing room from title */
+  font-size: 42px; /* Big... */
+  font-weight: bold; /* and bold */
+  color: var(--primary-color); /* Draws attention to this area */
 }
 
+/* The rarity symbols under the name */
+#rarity {
+  color: var(--middle-color); /* Background detail */
+  margin-bottom: 20px; /* Breathing room from selection buttons */
+  font-size: 22px; /* Just large enough to see on my phone */
+}
+
+/* Selection buttons; generic design */
 button {
   background-color: var(--middle-color);
   color: white;
@@ -71,9 +58,10 @@ button {
 }
 
 button:hover {
-  background-color: #777;
+  background-color: #777; /* highlight the hovered button */
 }
 
+/* Match current selection to primary color */
 button.selected {
   background-color: var(--primary-color);
   color: var(--bg-color);
@@ -81,31 +69,26 @@ button.selected {
   border: 2px solid var(--primary-color);
 }
 
-#output {
-  margin: 20px auto 0 auto;
-  padding: 20px 20px 0 20px;
-  font-size: 42px;
-  font-weight: bold;
-  color: var(--primary-color);
-  white-space: wrap;
-}
+/* Used to keep generate button centered */
 .generate-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: grid; /* Allows to center button in a center column */
+  grid-template-columns: 1fr auto 1fr; /* small center; equal left and right */
   align-items: center;
   justify-items: center;
-  gap: 10px;
-  margin: 20px auto;
+  gap: 10px; /* Gives just a tiny bit of room between button and dice */
+  margin-top: 25px; /* Add some space from selection buttons */
 }
 
+/* The generate button */
 #generate {
-  grid-column: 2;
+  grid-column: 2; /* Place in center column */
   margin-top: 10px;
   font-size: 28px;
   border-radius: 6px;
   border: 2px solid var(--primary-color);
 }
 
+/* Disabled until data loads; make it appear turned off */
 #generate:disabled {
   border: 2px solid var(--middle-color);
   background-color: var(--bg-color);
@@ -113,37 +96,61 @@ button.selected {
   cursor: not-allowed;
 }
 
+/* The dice icon */
 #random {
-  grid-column: 3;
-  margin-right: auto;
-  font-size: 28px;
+  grid-column: 3; /* Place in right-side column */
+  margin-right: auto; /* Push the icon to the left */
+  font-size: 28px; /* Same size as button text */
 }
 
-hr {
-  margin-top: 15px;
-  margin-bottom: 20px;
-  width: 95vw;
-  border: none;
-  background-color: var(--middle-color);
-  height: 1px;
-}
-
-#about {
-  color: var(--middle-color);
-  width: 85vw;
-  margin: auto;
-  text-align: left;
-}
-
-#rarity {
-  color: var(--middle-color);
-  padding-bottom: 20px;
-  font-size: 22px;
-}
-
+/* Rarity icon in the bottom-right corner */
 #average-rarity {
-  text-align: right;
-  margin-right: 5vw;
-  color: var(--middle-color);
-  font-size: 20px;
+  text-align: right; /* Push to the right */
+  margin-right: 5vw; /* Give a little space from edge of screen */
+  color: var(--middle-color); /* Don't draw attention to it */
+  font-size: 20px; /* Just enough to easily distinguish circle and diamond */
+}
+
+/* Horizontal rule to separate app info from the app */
+hr {
+  margin-top: 15px; /* For giving space from the generate button */
+  margin-bottom: 20px; /* Space until start of "about" content */
+  width: 95vw; /* Almost to the edge of screen */
+  height: 1px; /* Make it 1 pixel tall */
+  border: none; /* To see only 1 pixel thick we have to hide border */
+  background-color: var(--middle-color); /* Don't draw attention */
+}
+
+/* App information */
+#about {
+  color: var(--middle-color); /* Don't draw attention */
+  margin: auto; /* Center the text */
+  width: 85vw; /* Breathing room from edges of screen */
+  text-align: left; /* Makes it look formal and not part of the app */
+}
+
+/* Hyperlinks */
+a {
+  color: hsl(
+    var(--primary-hue),
+    calc(var(--primary-saturation) * 2 / 3),
+    calc(var(--primary-luminosity) * 4 / 5)
+  ); /* Slightly darker than theme color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline while hovering */
+}
+
+a:visited {
+  color: hsl(
+    var(--primary-hue),
+    calc(var(--primary-saturation) / 2),
+    calc(var(--primary-luminosity) / 2)
+  ); /* "Dim" compared to theme color; thanks for visiting my other work btw! */
+}
+
+a:active {
+  color: var(--primary-color); /* Bright light of excitement */
 }

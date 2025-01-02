@@ -184,12 +184,21 @@ function getRandomName(nameType) {
 }
 
 function setPrimaryColor(hue) {
-  document.documentElement.style.setProperty("--primary-hue", hue); // Update CSS variable
+  // Update CSS variable
+  document.documentElement.style.setProperty("--primary-hue", hue);
 }
 
 function setRandomPrimaryColor(colors = 9) {
-  const color = Math.floor(Math.random() * colors); // E.g. 24 yields 0-23
-  const hue = 360 * (color / colors);
+  const current_hue =
+    document.documentElement.style.getPropertyValue("--primary-hue");
+  let hue = current_hue;
+
+  // The user clicks the button to get a different color and that is the only
+  //    form of feedback for this feature, ensure it is different
+  while (hue == current_hue) {
+    const color = Math.floor(Math.random() * colors); // E.g. 24 yields 0-23
+    hue = 360 * (color / colors);
+  }
   setPrimaryColor(hue);
 }
 

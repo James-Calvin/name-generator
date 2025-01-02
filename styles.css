@@ -36,9 +36,13 @@ h2 {
   user-select: none; /* Standard syntax */
 }
 
-/* The generated name */
+/* The generated name container */
 #output {
-  margin-top: 40px; /* Breathing room from title */
+  margin: 20px 10px 0 10px; /* Breathing room from title */
+}
+
+/* The generated name text */
+#output-span {
   font-size: 42px; /* Big... */
   font-weight: bold; /* and bold */
   color: var(--primary-color); /* Draws attention to this area */
@@ -103,10 +107,20 @@ button.selected {
   cursor: not-allowed;
 }
 
+/* Clear formatting for clickable emojis */
+.emoji-button {
+  background: none; /* clear formatting */
+  padding: 8px;
+}
+
+.emoji-button:hover {
+  background: none; /* clear formatting */
+}
+
 /* The dice icon */
 #random {
   grid-column: 3; /* Place in right-side column */
-  margin-right: auto; /* Push the icon to the left */
+  justify-self: left; /* Push the icon to the left */
   font-size: 28px; /* Same size as button text */
 }
 

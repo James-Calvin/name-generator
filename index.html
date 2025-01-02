@@ -11,7 +11,7 @@
 <body>
   <!-- Title -->
   <h1>
-    <span class="clickable-text" onclick="setRandomPrimaryColor()">Name Generator</span>
+    <span class="clickable-text unselectable" onclick="setRandomPrimaryColor()">Name Generator</span>
   </h1>
 
   <!-- Display Name -->
@@ -20,10 +20,10 @@
   </div>
   
   <!-- Display Rarity -->
-  <div id="rarity">★★★</div>
+  <div id="rarity" class="unselectable">★★★</div>
 
   <!-- Race Selection -->
-  <div class="buttons race-buttons">
+  <div class="buttons race-buttons unselectable">
     <h2>
       <span class="clickable-text" onclick="{setRandomRace();generateFullName()}">Choose Race</span>
     </h2>
@@ -35,20 +35,20 @@
   </div>
 
   <!-- Gender Selection -->
-  <div class="buttons gender-buttons">
+  <div class="buttons gender-buttons unselectable">
     <h2>
-      <span class="clickable-text" onclick="{setRandomGender();generateFullName()}">Choose Gender</span></h2>
+      <span class="clickable-text unselectable" onclick="{setRandomGender();generateFullName()}">Choose Gender</span></h2>
     <button onclick="setGender('f')">Female</button>
     <button onclick="setGender('m')">Male</button>
   </div>
 
   <!-- Generate Button -->
-  <div class="generate-container">
+  <div class="generate-container unselectable">
     <button id="generate" disabled onclick="generateFullName()">Loading Data</button>
     <span id="random" class="clickable-text" onclick="rollDice()">🎲</span>
   </div>
 
-  <div id="average-rarity">★</div>
+  <div id="average-rarity" class="unselectable">★</div>
 
   <!-- About Information-->
   <hr>

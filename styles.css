@@ -29,6 +29,13 @@ h2 {
   padding: 12px; /* Ease of use; slightly larger bounding box for clicking */
 }
 
+/* Makes the text unselectable so clicking on it will not highlight */
+.unselectable {
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  user-select: none; /* Standard syntax */
+}
+
 /* The generated name */
 #output {
   margin-top: 40px; /* Breathing room from title */

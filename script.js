@@ -137,7 +137,11 @@ function generateFullName() {
   updateRaritySymbol();
 
   const fullName = `${first_name} ${middle_name} ${last_name}`;
-  console.log(`${gender}${race}\t${fullName}`);
+  const average_rarity = (rarity.first + rarity.middle + rarity.last) / 3;
+  const average_symbol = getRaritySymbol(average_rarity);
+  const average_rarity_element = document.getElementById("average-rarity");
+  average_rarity_element.innerText = average_symbol;
+  console.log(`${gender}${race}\t${fullName}\t${getNameRarity()}`);
 
   updateName();
 }

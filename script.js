@@ -22,6 +22,12 @@ function getRaritySymbol(value) {
   return "✪";
 }
 
+function powerMeanRarity(power = 2) {
+  const { first, middle, last } = rarity;
+  const numerator = first ** power + middle ** power + last ** power;
+  return Math.pow(numerator / 3, 1 / power);
+}
+
 function getNameRarity() {
   let rarityString = "";
   rarityString += getRaritySymbol(rarity["first"]);
@@ -137,11 +143,10 @@ function generateFullName() {
   updateRaritySymbol();
 
   const fullName = `${first_name} ${middle_name} ${last_name}`;
-  const average_rarity = (rarity.first + rarity.middle + rarity.last) / 3;
-  const average_symbol = getRaritySymbol(average_rarity);
+  const symbol = getRaritySymbol(powerMeanRarity());
   const average_rarity_element = document.getElementById("average-rarity");
-  average_rarity_element.innerText = average_symbol;
-  console.log(`${gender}${race}\t${fullName}\t${getNameRarity()}`);
+  average_rarity_element.innerText = symbol;
+  console.log(`${gender}${race}\t${fullName}\t${getNameRarity()}\t${symbol}`);
 
   updateName();
 }
